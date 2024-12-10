@@ -2,22 +2,25 @@ package com.mysite.sbb;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 
 @Controller
 public class MainController {
     // GTP http://lovalhost:8080/
     @GetMapping("/")
-    public void home () {
+    @ResponseBody
+    public int home () {
         System.out.println("home");
-        this.contact();
+        return 22;
     }
 
     // GTP http://lovalhost:8080/about
     @GetMapping("/about")
-    public void about () {
+    @ResponseBody
+    public String about () {
         System.out.println("about");
-        this.contact();
+        return "안녕하세요";
     }
 
     public void contact() {
