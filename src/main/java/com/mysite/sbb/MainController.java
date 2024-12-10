@@ -10,11 +10,17 @@ public class MainController {
     @GetMapping("/")
     public void home () {
         System.out.println("home");
+        this.contact();
     }
 
     // GTP http://lovalhost:8080/about
     @GetMapping("/about")
     public void about () {
         System.out.println("about");
+        this.contact();
+    }
+
+    public void contact() {
+        System.out.println("contact");
     }
 }
