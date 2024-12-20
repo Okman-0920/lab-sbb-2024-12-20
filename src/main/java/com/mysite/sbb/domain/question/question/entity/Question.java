@@ -16,7 +16,7 @@ public class Question {
     @Id // 이 필드가 엔티티의 기본키
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     // 기본기의 값을 자동으로 생성하는 전략(strategy)을 설정
-    private Long id;
+    private Integer id;
 
     @Column(length = 200)
     private String subject;
