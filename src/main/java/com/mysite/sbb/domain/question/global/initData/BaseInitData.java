@@ -1,5 +1,6 @@
 package com.mysite.sbb.domain.question.global.initData;
 
+import com.mysite.sbb.domain.question.answer.entity.Answer;
 import com.mysite.sbb.domain.question.answer.repository.AnswerRepository;
 import com.mysite.sbb.domain.question.question.entity.Question;
 import com.mysite.sbb.domain.question.question.repository.QuestionRepository;
@@ -45,6 +46,12 @@ public class BaseInitData {
             q2.setContent("id는 자동으로 생성되나요?");
             q2.setCreateDate(LocalDateTime.now());
             this.questionRepository.save(q2);  // 두번째 질문 저장
+
+            Answer a = new Answer();
+            a.setContent("네 자동으로 생성됩니다.");
+            a.setQuestion(q2);
+            a.setCreateDate(LocalDateTime.now());
+            this.answerRepository.save(a);
         }
     }
 }
