@@ -8,6 +8,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -86,7 +87,8 @@ class SbbApplicationTests {
 
 	@Test
 	@DisplayName("질문 데이터 삭제하기")
-//	@Transactional
+	@Transactional
+	@Rollback(false)
 	void t7() {
 		assertEquals(2, this.questionRepository.count());
 		Optional<Question> opFindById = this.questionRepository.findById(1);
@@ -110,9 +112,6 @@ class SbbApplicationTests {
 	@Transactional // 질문 3번: Lazy가 어디서 걸리는건지
 	void t9() {
 		Optional<Question> qw = this.questionRepository.findById(2);
-		// 질문 1번: (표현이 맞는지?) 영속성 컨텍스트에 등록?
-		// 질문 2번: 왜 이걸 영속성 컨텍스트로 등록해야만 하나?
-		// 영속성: 데이터를 생성한 프로그램이 종료되어도 사라지지 않는 데이터의 특성
 		assertTrue(qw.isPresent());
 		Question q = qw.get();
 
